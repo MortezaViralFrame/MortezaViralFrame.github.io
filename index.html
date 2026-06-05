@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WiseAdvertisement — Video Work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&family=Sora:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --bg-soft:#141410;
+    --ink:#f7f7f2;
+    --muted:#8d8d82;
+    --yellow:#ffe600;
+    --neon:#d4ff00;
+    --card:#151512;
+    --line:rgba(255,230,0,.12);
+    --display:"Rowdies",cursive;
+    --body:"Sora",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--ink);font-family:var(--body);
+    -webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;top:-200px;right:-150px;width:520px;height:520px;z-index:0;
+    background:radial-gradient(circle,rgba(255,230,0,.10),transparent 65%);pointer-events:none;
+  }
+  body::after{
+    content:"";position:fixed;bottom:-220px;left:-160px;width:560px;height:560px;z-index:0;
+    background:radial-gradient(circle,rgba(212,255,0,.07),transparent 65%);pointer-events:none;
+  }
+  header{
+    position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);
+    background:rgba(10,10,10,.72);border-bottom:1px solid var(--line);
+  }
+  nav{max-width:1180px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+  .logo{font-family:var(--display);font-weight:700;font-size:1.2rem;letter-spacing:.01em;display:flex;align-items:center;gap:10px}
+  .logo .dot{width:12px;height:12px;border-radius:50%;background:var(--yellow);box-shadow:0 0 14px var(--yellow),0 0 28px rgba(255,230,0,.5)}
+  .navlinks{display:flex;gap:30px;font-size:.92rem;font-weight:400}
+  .navlinks a{color:var(--muted);text-decoration:none;transition:color .2s,text-shadow .2s}
+  .navlinks a:hover{color:var(--yellow);text-shadow:0 0 12px rgba(255,230,0,.6)}
+  @media(max-width:640px){.navlinks{display:none}}
+  .about{max-width:1180px;margin:0 auto;padding:110px 28px 80px;position:relative;z-index:2}
+  .eyebrow{
+    font-family:var(--display);font-weight:300;font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--neon);margin-bottom:26px;display:flex;align-items:center;gap:14px;
+  }
+  .eyebrow::before{content:"";width:46px;height:2px;background:var(--neon);box-shadow:0 0 10px var(--neon)}
+  .about h1{
+    font-family:var(--display);font-weight:700;line-height:1.02;letter-spacing:.005em;
+    font-size:clamp(2.6rem,7.5vw,5.4rem);max-width:16ch;
+  }
+  .about h1 .hl{color:var(--yellow);text-shadow:0 0 24px rgba(255,230,0,.45)}
+  .about p{margin-top:30px;max-width:56ch;color:var(--muted);font-size:1.1rem;font-weight:300}
+  .about .cta{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap}
+  .btn{
+    padding:14px 30px;border-radius:6px;font-family:var(--display);font-weight:400;font-size:.95rem;
+    text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s;display:inline-flex;align-items:center;gap:9px;
+  }
+  .btn-primary{background:var(--yellow);color:#0a0a0a;box-shadow:0 0 0 rgba(255,230,0,0)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,230,0,.35)}
+  .btn-ghost{border:1.5px solid var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--neon);color:var(--neon);box-shadow:0 0 22px rgba(212,255,0,.25)}
+  .section{max-width:1180px;margin:0 auto;padding:64px 28px;position:relative;z-index:2}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:42px}
+  .sec-head h2{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,4vw,2.7rem);letter-spacing:.01em}
+  .sec-head h2 .hl{color:var(--yellow)}
+  .sec-head .ln{flex:1;height:1px;background:var(--line)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:24px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+    transition:transform .3s,border-color .3s,box-shadow .3s;cursor:pointer;
+  }
+  .card:hover{transform:translateY(-6px);border-color:var(--yellow);box-shadow:0 14px 40px rgba(255,230,0,.14)}
+  .thumb{position:relative;aspect-ratio:9/16;background:var(--bg-soft);overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .thumb img,.thumb video{width:100%;height:100%;object-fit:cover;display:block}
+  .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.18);transition:background .2s}
+  .card:hover .play{background:rgba(0,0,0,.04)}
+  .play svg{width:56px;height:56px;filter:drop-shadow(0 4px 18px rgba(255,230,0,.5))}
+  .meta{padding:17px 19px}
+  .meta h3{font-family:var(--display);font-weight:400;font-size:1.05rem;letter-spacing:.01em}
+  .meta p{color:var(--muted);font-size:.86rem;margin-top:5px;font-weight:300}
+  .contact-inner{
+    background:linear-gradient(135deg,#16160f,#0e0e0a);border:1px solid var(--line);
+    border-radius:24px;padding:clamp(36px,5vw,68px);position:relative;overflow:hidden;text-align:center;
+  }
+  .contact-inner::after{content:"";position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:380px;height:380px;background:radial-gradient(circle,rgba(255,230,0,.16),transparent 70%);pointer-events:none}
+  .contact-inner h2{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.5vw,3rem);position:relative}
+  .contact-inner h2 .hl{color:var(--yellow);text-shadow:0 0 22px rgba(255,230,0,.4)}
+  .contact-inner p{color:var(--muted);margin:18px auto 0;max-width:46ch;position:relative;font-weight:300}
+  .contact-links{margin-top:34px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative}
+  .modal{position:fixed;inset:0;z-index:100;background:rgba(5,5,5,.94);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:24px}
+  .modal.open{display:flex}
+  .modal-box{position:relative;width:min(420px,100%);aspect-ratio:9/16;max-height:88vh}
+  .modal-box iframe,.modal-box video{width:100%;height:100%;border:0;border-radius:18px;background:#000}
+  .modal-close{position:absolute;top:-46px;right:0;background:none;border:0;color:var(--yellow);font-size:1.7rem;cursor:pointer;line-height:1}
+  footer{border-top:1px solid var(--line);margin-top:50px;padding:40px 28px;position:relative;z-index:2}
+  .foot-inner{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center}
+  .foot-inner p{color:var(--muted);font-size:.84rem;font-weight:300}
+  .fade{opacity:0;transform:translateY(26px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo"><span class="dot"></span>WiseAdvertisement</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#work">Videos</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section class="about fade" id="about">
+  <div class="eyebrow">About me</div>
+  <h1>I make short-form video that <span class="hl">stops the scroll.</span></h1>
+  <p>I'm a video editor and producer specializing in vertical 9:16 content for TikTok, Reels, and Shorts. I take ideas from concept to final cut — clean, fast, made to perform. Below are some samples of my recent work.</p>
+  <div class="cta">
+    <a href="#work" class="btn btn-primary">Watch the samples</a>
+    <a href="#contact" class="btn btn-ghost">Get in touch</a>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="sec-head">
+    <h2>Video <span class="hl">Samples</span></h2>
+    <span class="ln"></span>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="section" id="contact">
+  <div class="contact-inner">
+    <h2>Let's <span class="hl">work together.</span></h2>
+    <p>Got a project or want samples tailored to your business? Reach out — I'll get back to you fast.</p>
+    <div class="contact-links">
+      <a href="mailto:you@example.com" class="btn btn-primary">Email me</a>
+      <a href="https://t.me/yourusername" class="btn btn-ghost" target="_blank">Telegram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <p>&copy; <span id="yr"></span> WiseAdvertisement</p>
+    <p>Short-form video &middot; 9:16</p>
+  </div>
+</footer>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="modal-close" id="close">&times;</button>
+    <div id="player"></div>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   EDIT YOUR VIDEOS HERE  vvv
+   ---------------------------------------------------------
+   type:"youtube"  -> id is the YouTube video ID (after v= or youtu.be/)
+   type:"file"     -> src is a video file path in your repo (keep small)
+   title = the video name | desc = one short line about it
+   thumb = image path, or leave "" to auto-use the YouTube thumbnail
+========================================================= */
+const VIDEOS = [
+  { title:"Married to the Bone", desc:"Animated dental explainer, 13 scenes.", type:"youtube", id:"dQw4w9WgXcQ", thumb:"" },
+  { title:"24/7 Roadside Rescue", desc:"Cinematic towing promo, night shoot.", type:"youtube", id:"dQw4w9WgXcQ", thumb:"" },
+  { title:"Emsella, Explained", desc:"Clinic treatment in 30 seconds.", type:"youtube", id:"dQw4w9WgXcQ", thumb:"" },
+  { title:"Before / After Reveal", desc:"Smile transformation hook.", type:"file", src:"videos/sample.mp4", thumb:"thumbs/dental.jpg" },
+  { title:"Tenex in 30 Seconds", desc:"Fast, clear procedure breakdown.", type:"youtube", id:"dQw4w9WgXcQ", thumb:"" },
+  { title:"Flatbed Night Run", desc:"Moody product-style towing reel.", type:"youtube", id:"dQw4w9WgXcQ", thumb:"" },
+];
+/* =========================================================
+   STOP EDITING
+========================================================= */
+
+const grid=document.getElementById('grid');
+function thumbFor(v){
+  if(v.thumb) return v.thumb;
+  if(v.type==="youtube") return "https://img.youtube.com/vi/"+v.id+"/hqdefault.jpg";
+  return "";
+}
+grid.innerHTML=VIDEOS.map(function(v,i){
+  return '<div class="card fade" style="animation-delay:'+(i*70)+'ms" data-i="'+i+'">'+
+    '<div class="thumb">'+
+      (thumbFor(v)?'<img src="'+thumbFor(v)+'" alt="'+v.title+'" loading="lazy">':'')+
+      '<div class="play"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#ffe600"/><path d="M10 8l6 4-6 4V8z" fill="#0a0a0a"/></svg></div>'+
+    '</div>'+
+    '<div class="meta"><h3>'+v.title+'</h3><p>'+v.desc+'</p></div>'+
+  '</div>';
+}).join('');
+
+const modal=document.getElementById('modal'),player=document.getElementById('player');
+document.querySelectorAll('.card').forEach(function(c){
+  c.onclick=function(){
+    const v=VIDEOS[c.dataset.i];
+    player.innerHTML = v.type==="youtube"
+      ? '<iframe src="https://www.youtube.com/embed/'+v.id+'?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>'
+      : '<video src="'+v.src+'" controls autoplay playsinline></video>';
+    modal.classList.add('open');
+  };
+});
+function closeModal(){modal.classList.remove('open');player.innerHTML='';}
+document.getElementById('close').onclick=closeModal;
+modal.onclick=function(e){if(e.target===modal)closeModal();};
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
