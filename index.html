@@ -46,6 +46,11 @@
   .navlinks a:hover{color:var(--yellow);text-shadow:0 0 12px rgba(255,230,0,.6)}
   @media(max-width:640px){.navlinks{display:none}}
   .about{max-width:1180px;margin:0 auto;padding:110px 28px 80px;position:relative;z-index:2}
+  .avatar{
+    width:104px;height:104px;border-radius:50%;object-fit:cover;display:block;
+    margin-bottom:30px;border:2px solid var(--yellow);
+    box-shadow:0 0 0 6px rgba(255,230,0,.08),0 0 28px rgba(255,230,0,.35);
+  }
   .eyebrow{
     font-family:var(--display);font-weight:300;font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;
     color:var(--neon);margin-bottom:26px;display:flex;align-items:center;gap:14px;
@@ -120,6 +125,7 @@
 </header>
 
 <section class="about fade" id="about">
+  <img class="avatar" src="me.png" alt="Morteza MohammadKhan">
   <div class="eyebrow">About me</div>
   <h1>Several years editing video <span class="hl">across every style.</span></h1>
   <p>I've worked in video editing for several years across a wide range of styles. My focus is on building a brand strategy that strengthens your social media performance — pairing the latest editing trends with AI-driven production to create content built to go viral. Below are some samples of my recent work.</p>
@@ -172,7 +178,7 @@
    thumb = image path, or leave "" to auto-use the YouTube thumbnail
 ========================================================= */
 const VIDEOS = [
-  { title:"AllStateTowing", desc:"Any Vehicle. Any Time.", type:"youtube", id:"g_YvIu493es?", thumb:"cover1" },
+  { title:"Married to the Bone", desc:"Animated dental explainer, 13 scenes.", type:"youtube", id:"dQw4w9WgXcQ", thumb:"" },
   { title:"24/7 Roadside Rescue", desc:"Cinematic towing promo, night shoot.", type:"youtube", id:"dQw4w9WgXcQ", thumb:"" },
   { title:"Emsella, Explained", desc:"Clinic treatment in 30 seconds.", type:"youtube", id:"dQw4w9WgXcQ", thumb:"" },
   { title:"Before / After Reveal", desc:"Smile transformation hook.", type:"file", src:"videos/sample.mp4", thumb:"thumbs/dental.jpg" },
